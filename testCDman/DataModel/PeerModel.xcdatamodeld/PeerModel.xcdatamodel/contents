@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="22G313" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Contact" representedClassName="Contact" syncable="YES" codeGenerationType="class">
+        <attribute name="createDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="note" optional="YES" attributeType="String"/>
+        <attribute name="phone" optional="YES" attributeType="String"/>
+        <attribute name="telegram" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="peer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Peer" inverseName="contacts" inverseEntity="Peer"/>
+    </entity>
+    <entity name="Note" representedClassName="Note" syncable="YES" codeGenerationType="class">
+        <attribute name="noteCreateDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="noteID" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="noteName" optional="YES" attributeType="String"/>
+        <attribute name="noteSummary" optional="YES" attributeType="String"/>
+        <attribute name="noteText" optional="YES" attributeType="String"/>
+        <attribute name="noteTimestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="peer" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Peer" inverseName="notes" inverseEntity="Peer"/>
+    </entity>
+    <entity name="Peer" representedClassName="Peer" syncable="YES" codeGenerationType="class">
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="createDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="sourceContact" optional="YES" attributeType="String"/>
+        <attribute name="summary" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="contacts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Contact" inverseName="peer" inverseEntity="Contact"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Note" inverseName="peer" inverseEntity="Note"/>
+    </entity>
+</model>
